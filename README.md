@@ -41,7 +41,7 @@ pip install -r requirements.txt
 
 5. Crear archivo .env
 
-Este proyecto utiliza una base de datos PostgreSQL. Antes de realizar las migraciones de la base de datos, asegúrate de crear un archivo `.env` 
+Este proyecto utiliza una base de datos PostgreSQL. Antes de realizar las migraciones de la base de datos, asegúrate de crear un archivo `.env`
 en la raíz del proyecto `backend` para almacenar las variables de entorno necesarias. A continuación, muestra un ejemplo de cómo debería ser el archivo `.env`:
 
 `nextauthdb` es el nombre de la tabla de postgresql
@@ -75,6 +75,7 @@ DATABASES = {
     }
 }
 ```
+
 Cambia el motor de la base de datos de PostgreSQL a SQLite. La configuración debe quedar así:
 
 ```python
@@ -96,7 +97,7 @@ python manage.py migrate
 ```
 
 8. Recuerda crear un usuario para poder acceder al admin
-   
+
 ```python
 python manage.py createsuperuser
 ```
@@ -122,7 +123,8 @@ Puedes acceder a los datos climáticos utilizando las siguientes rutas:
 - `/api/v1/clima/{id}/`: Obtiene los datos climáticos específicos de la ciudad especificada.
 - **Nota:** Agrega `/?key=123` (no importa el valor, lo importante es que exista) al final de la URL para acceder al recurso.
 
-Ejemplo: 
+Ejemplo:
+
 - localhost:800/api/v1/clima/?key=123
 - localhost:800/api/v1/clima/{id}/?key=1433a
 
@@ -134,7 +136,7 @@ Ejemplo:
 - ciudad: String
 - fecha: String
 - key: String
-    
+
 ```json
 {
     "temperatura": "",
@@ -146,7 +148,7 @@ Ejemplo:
 }
 ```
 
-El key del modelo (No confundir con el key de la URL) permite que los datos aparezcan en las consultas, por ejemplo, si se tienen dos campos en la base de datos, donde uno tiene key y otro no, 
+El key del modelo (No confundir con el key de la URL) permite que los datos aparezcan en las consultas, por ejemplo, si se tienen dos campos en la base de datos, donde uno tiene key y otro no,
 la peticiones solo mostraran los campos con key, en este ejemplo, la peticion GET solo visualizaria los valores de CARTAGENA
 
 ```json
@@ -166,7 +168,7 @@ la peticiones solo mostraran los campos con key, en este ejemplo, la peticion GE
     "velocidad_viento": 2.5,
     "ciudad": "SANTIAGO DE CALI",
     "fecha": "12 Febrero 2024",
-    "key": 
+    "key":
 }
 ```
 
@@ -184,30 +186,38 @@ Este proyecto utiliza Next.js para el frontend, y Prisma para crear el backend d
 npm install
 ```
 
-4. Una vez que se hayan instalado todas las dependencias, puedes iniciar el servidor de desarrollo ejecutando:
+4. Realiza la migración de Prisma, ejecutando:
+
+```bash
+npx prisma migrate dev --name init
+```
+
+5. Una vez que se hayan instalado todas las dependencias, puedes iniciar el servidor de desarrollo ejecutando:
+
 ```bash
 npm run dev
 ```
 
 ![Ejemplo de imagen](imgs_readme/next1.png)
 
-5. Recuerda crear un usuario en la vista `register` y luego acceder en `login`, para poder acceder al dashboard
+6. Recuerda crear un usuario en la vista `register` y luego acceder en `login`, para poder acceder al dashboard
 
 ![Ejemplo de imagen](imgs_readme/next2.png)
-   
+
 ![Ejemplo de imagen](imgs_readme/next3.png)
 
 ![Ejemplo de imagen](imgs_readme/next4.png)
 
-
 Esto iniciará el servidor de desarrollo de Next.js. Puedes acceder a tu aplicación en http://localhost:3000 en tu navegador web.
 
-5. Si necesitas compilar tu aplicación para producción, puedes hacerlo ejecutando:
+7. Si necesitas compilar tu aplicación para producción, puedes hacerlo ejecutando:
+
 ```bash
 npm run build
 ```
 
-6. Y luego iniciar el servidor en modo de producción con:
+8. Y luego iniciar el servidor en modo de producción con:
+
 ```bash
 npm run start
 ```
