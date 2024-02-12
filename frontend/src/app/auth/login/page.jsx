@@ -1,39 +1,10 @@
 "use client"
 
-import { useForm } from 'react-hook-form'
-import { signIn } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { usePage } from "./usePage"
 
 export default function LoginPage() {
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm()
-
-  const router = useRouter()
-
-  const [error, setError] = useState(null)
-
-  const onSubmit = handleSubmit(async (data) => {
-    const res = await signIn("credentials", {
-      email: data.email,
-      password: data.password,
-      redirect: false,
-    })
-
-
-    if (res.error) {
-      setError(res.error)
-    } else {
-      router.push("/dashboard")
-      router.refresh()
-    }
-
-  })
-
+  const { error, errors, handleSubmit, onSubmit, register } = usePage()
 
   return (
     <div className="h-[calc(100vh-7rem)] flex justify-center items-center dashboard">

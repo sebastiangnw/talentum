@@ -1,40 +1,10 @@
 "use client"
 
-import { useForm } from "react-hook-form"
-import { useRouter } from "next/navigation"
+import { usePage } from "./usePage"
 
 export default function RegisterPage() {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm()
 
-    const router = useRouter()
-    const onSubmit = handleSubmit(async (data) => {
-
-        if (data.password !== data.confirmPassword) {
-            return alert("Passwords do not match")
-        }
-
-        const res = await fetch("/api/auth/register", {
-            method: "POST",
-            body: JSON.stringify({
-                username: data.username,
-                email: data.email,
-                password: data.password,
-            }),
-            headers: {
-                "Content-Type": "application/json",
-            }
-        })
-
-        if (res.ok) {
-            router.push("/auth/login")
-        }
-    })
-
-    console.log(errors)
+    const { errors, handleSubmit, onSubmit, register } = usePage()
 
     return (
         <div className="h-[calc(100vh-7rem)] flex justify-center items-center dashboard">
