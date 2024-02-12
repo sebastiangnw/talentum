@@ -1,0 +1,127 @@
+.card {
+  position: relative;
+  overflow: hidden;
+  width: 320px;
+  height: 560px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  top: 95%; /* Posición debajo de la tarjeta */
+  left: 50%; /* Alineado al centro */
+  transform: translateX(-50%); /* Centrado horizontal */
+  width: 100%; /* Ancho de la sombra */
+  height: 60px; /* Altura de la sombra */
+  border-radius: 50%; /* Forma ovalada */
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.3),
+    rgba(0, 0, 0, 0)
+  ); /* Degradado en los extremos de la sombra */
+  z-index: -1; /* Detrás de la tarjeta */
+  filter: blur(8px); /* Desenfoque para suavizar */
+}
+
+.cityName {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: purple;
+  font-weight: bold;
+  padding: 1px 20px; /* Aumenta el espacio alrededor del texto */
+  border-radius: 5px;
+  display: inline-block; /* Hace que el elemento se comporte como un bloque en línea */
+  font-size: 18px; /* Establece el tamaño del texto en 24px */
+  background: linear-gradient(
+    to left,
+    rgba(192, 192, 192, 0.2),
+    rgba(255, 255, 255, 0.5),
+    rgba(192, 192, 192, 0.2)
+  );
+  white-space: nowrap; /* Evita el salto de línea */
+}
+
+.fecha {
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: purple;
+  padding: 1px;
+  border-radius: 5px;
+}
+
+.tempCard {
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: purple;
+  font-weight: bold;
+  padding: 1px;
+  border-radius: 5px;
+  font-size: 40px;
+}
+
+.tipoClima {
+  position: absolute;
+  bottom: 0;
+  left: 73px;
+  transform: translateX(-50%);
+  color: white;
+  font-weight: bold;
+  padding: 3px;
+  padding-right: 15px;
+  padding-left: 10px;
+  white-space: nowrap;
+  border-radius: 0px 20px 20px 0px;
+  font-size: 16px;
+  background: linear-gradient(to bottom, #7589e9, purple);
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+}
+
+.backgroundImage {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.foreground {
+  padding: 10px;
+  height: 150px;
+  background-color: white;
+}
+
+.weatherInfo {
+  margin-top: 10px;
+}
+
+.weatherItem {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  padding: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-bottom: 1px solid #ccc;
+  color: #666;
+}
+
+.weatherItem:last-child {
+  border-bottom: none;
+}
+
+.weatherItem img {
+  margin-right: 10px; /* Espacio entre la imagen y el texto */
+}
+
+.weatherItem span {
+  margin-left: auto; /* Alinea el texto a la derecha */
+}

@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  height: 100%;
+  margin: 0;
+  background-image: linear-gradient(
+    to bottom right,
+    white 15%,
+    pink 50%,
+    blue 130%
+  );
+}
+
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.card-form {
+  background-color: #f0f2f5; /* Color de fondo de la tarjeta */
+  border-radius: 20px; /* Borde redondeado */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra */
+  padding: 20px; /* Espaciado interno */
+  width: 500px; /* Ancho de la tarjeta */
+  height: auto; /* Altura de la tarjeta */
+}
+
+.dashboard {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background-image: url("/imgs/edificios3.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.dashboard::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  height: 80%;
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  background-image: linear-gradient(
+    to bottom right,
+    #3061bf 10%,
+    transparent 0%,
+    #94a7cb 100%
+  );
+  z-index: -1;
+}
